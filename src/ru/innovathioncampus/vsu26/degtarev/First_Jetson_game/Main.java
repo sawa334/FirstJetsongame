@@ -19,14 +19,7 @@ public class Main {
         int step = 0;
         String leftBlock = "| ";
         String rightBlock = "|";
-        String wall = "+ —— + —— + —— +";
-        String gamingField = "+ —— + —— + —— +\n"
-                + "|    |    | \uD83C\uDFE0 |\n"
-                + "+ —— + —— + —— +\n"
-                + "|    | " + monster + " |    |\n"
-                + "+ —— + —— + —— +\n"
-                + "| " + person + " |    |    |\n"
-                + "+ —— + —— + —— +";
+        String wall = "+ —— + —— + —— + —— + —— +";
         String[][] board = new String[sizeBoard][sizeBoard];
         for (int y = 0; y < sizeBoard; y++) {
             for (int x = 0; x < sizeBoard; x++) {
@@ -100,6 +93,13 @@ public class Main {
                             break;
                         } else {
                             System.out.println("Решите задачу.");
+                            Random rnd = new Random();
+                            int q = rnd.nextInt(50);
+                            int w = rnd.nextInt(50);
+                            int trueAnser = q + w ;
+                            System.out.print(q);
+                            System.out.print("+");
+                            System.out.print(w);
                         }
                     } else {
                         System.out.println("Координаты не изменены");
