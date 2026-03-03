@@ -93,18 +93,27 @@ public class Main {
                             break;
                         } else {
                             System.out.println("Решите задачу.");
-                            Random rnd = new Random();
-                            int q = rnd.nextInt(50);
-                            int w = rnd.nextInt(50);
-                            int trueAnser = q + w ;
-                            System.out.print(q);
-                            System.out.print("+");
-                            System.out.print(w);
+                            taskMonster();
+
                         }
                     } else {
                         System.out.println("Координаты не изменены");
                     }
 
+                    if (personLive == 0) {
+                        Random p = new Random();
+                        int t = p.nextInt(400);
+                        int i = p.nextInt(400);
+                        int trueAnswer = x + y;
+                        System.out.println("Реши пример: " + t + " + " + i + " = ?");;
+                        int ans = sc.nextInt();
+                        if (trueAnswer == ans) {
+                            System.out.println("Верно! Ты победил монстра");
+                            personLive++;
+                        }
+                        System.out.println("Ты проиграл эту битву!");
+                        personLive--;
+                    }
                     if (personLive <= 0) {
                         break;
                     }
@@ -115,6 +124,20 @@ public class Main {
             case "НЕТ" -> System.out.println("Жаль, приходи еще!");
             default -> System.out.println("Данные введены неккоректно");
         }
-
     }
+     static int taskMonster(){
+         Random r = new Random();
+         int x = r.nextInt(100);
+         int y = r.nextInt(100);
+         int trueAnswer = x + y;
+         System.out.println("Реши пример: " + x + " + " + y + " = ?");
+         Scanner sc = new Scanner(System.in);
+         int ans = sc.nextInt();
+         if (trueAnswer == ans) {
+             System.out.println("Верно! Ты победил монстра");
+         }
+         System.out.println("Ты проиграл эту битву!");
+         return 0;
+     }
+
 }
