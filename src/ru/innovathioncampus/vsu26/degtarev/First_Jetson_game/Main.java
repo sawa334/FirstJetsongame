@@ -93,8 +93,13 @@ public class Main {
                             break;
                         } else {
                             System.out.println("Решите задачу.");
-                            taskMonster();
-
+                            if (taskMonster(difficultGame)) {
+                                board[personY - 1][personX - 1] = " ";
+                                personX = x;
+                                personY = y;
+                            } else {
+                                personLive --;
+                            }
                         }
                     } else {
                         System.out.println("Координаты не изменены");
@@ -125,19 +130,46 @@ public class Main {
             default -> System.out.println("Данные введены неккоректно");
         }
     }
-     static int taskMonster(){
-         Random r = new Random();
-         int x = r.nextInt(100);
-         int y = r.nextInt(100);
-         int trueAnswer = x + y;
-         System.out.println("Реши пример: " + x + " + " + y + " = ?");
-         Scanner sc = new Scanner(System.in);
-         int ans = sc.nextInt();
-         if (trueAnswer == ans) {
-             System.out.println("Верно! Ты победил монстра");
-         }
-         System.out.println("Ты проиграл эту битву!");
-         return 0;
+     static boolean taskMonster(int key){
+        if (key == 1) {
+            Random r = new Random();
+            int x = r.nextInt(100);
+            int y = r.nextInt(100);
+            int trueAnswer = x + y;
+            System.out.println("Реши пример: " + x + " + " + y + " = ?");
+            Scanner sc = new Scanner(System.in);
+            int ans = sc.nextInt();
+            if (trueAnswer == ans) {
+                System.out.println("Верно! Ты победил монстра");
+                return true;
+            }
+            System.out.println("Ты проиграл эту битву!");
+            return false;
+
+        } else {
+            /////////
+        }
+         return false;
      }
+    static void outputBoard(String[][] board, int live) {
+        String leftBlock = "| ";
+        String rightBlock = "|";
+        String wall = "+ —— + —— + —— + —— + —— +";
+
+        for (String[] raw : board) {
+            System.out.println(wall);
+            for (String col : raw) {
+                System.out.print(leftBlock + col + " ");
+            }
+            System.out.println(rightBlock);
+        }
+        System.out.println(wall);
+
+
+        System.out.println("Количество жизней:\t" + live + "\n");
+    }
+
+
+
 
 }
