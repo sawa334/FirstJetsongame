@@ -3,9 +3,9 @@ package ru.innovathioncampus.vsu26.degtarev.First_Jetson_game;
 import java.util.Random;
 
 public class Person {
-    int x, y; // координаты персонажа
-    String image = "\\uD83E\\uDDD9\\u200D"; // вид персонажа на поле
-    int live = 3; // количество жизней
+    private int x, y; // координаты персонажа
+    private String image = "\\uD83E\\uDDD9\\u200D"; // вид персонажа на поле
+    private int live = 3; // количество жизней
     public boolean isMoveCorrect(int x, int y) {
         return this.x == x && Math.abs(this.y - y) == 1 || this.y == y && Math.abs(this.x - x) == 1;
     }
@@ -30,5 +30,25 @@ public class Person {
         x = 1;
         y = 1;
     }
-
+    public int getX(){
+        return x;
+    }
+    public int getY() {
+        return y;
+    }
+    public int getLive() {
+        return live;
+    }
+    public String getImage(){
+        return image;
+    }
+    public void setImage(String image) {
+        this.image = image;
+    }
+    public void downLive() {
+        if (live < 0)
+            live = 0;
+        else
+            live--;
+    }
 }

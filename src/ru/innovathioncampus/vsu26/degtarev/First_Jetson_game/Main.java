@@ -63,7 +63,7 @@ public class Main {
                 int maxStep = 2;
 
                 while (true) {
-                    board[person1.y - 1][person1.x - 1] = person1.image;
+                    board[person1.getY() - 1][person1.getX() - 1] = person1.getImage();
                     for (String[] raw : board) {
                         System.out.println(wall);
                         for (String col : raw) {
@@ -74,10 +74,10 @@ public class Main {
                     System.out.println(wall);
 
 
-                    System.out.println("Количество жизней:\t" + person1.live + "\n");
+                    System.out.println("Количество жизней:\t" + person1.getLive() + "\n");
 
                     System.out.println("Введите куда будет ходить персонаж(ход возможен только по вертикали и горизонтали на одну клетку;" +
-                            "\nКоординаты персонажа - (x: " + person1.x + ", y: " + person1.y + "))");
+                            "\nКоординаты персонажа - (x: " + person1.getX() + ", y: " + person1.getY() + "))");
                     int x = sc.nextInt();
                     int y = sc.nextInt();
                     System.out.println(x + ", " + y);
@@ -85,10 +85,10 @@ public class Main {
                     // проверка
                     if (person1.isMoveCorrect(x,y)) {
                         if (board[y - 1][x - 1].equals("  ")) {
-                            board[person1.y - 1][person1.x - 1] = "  ";
+                            board[person1.getY() - 1][person1.getX() - 1] = "  ";
                             person1.move(x,y);
                             step++;
-                            System.out.println("Ход корректный; Новые координаты: " + person1.x + ", " + person1.y +
+                            System.out.println("Ход корректный; Новые координаты: " + person1.getX() + ", " + person1.getY() +
                                     "\nХод номер: " + step);
                         }else if (board[y - 1][x - 1].equals(castle)) {
                             System.out.println("Вы прошли игру!");
@@ -96,7 +96,7 @@ public class Main {
                         } else {
                             System.out.println("Решите задачу.");
                             if (taskMonster(difficultGame)) {
-                                board[person1.y - 1][person1.x - 1] = " ";
+                                board[person1.getY() - 1][person1.getX() - 1] = " ";
                                 person1.move(x,y);
                             } else {
                                person1.otnimatZhizn();
@@ -106,7 +106,7 @@ public class Main {
                         System.out.println("Координаты не изменены");
                     }
 
-                    if (person1.live == 0) {
+                    if (person1.getLive() == 0) {
                         Random p = new Random();
                         int t = p.nextInt(400);
                         int i = p.nextInt(400);
@@ -115,12 +115,12 @@ public class Main {
                         int ans = sc.nextInt();
                         if (trueAnswer == ans) {
                             System.out.println("Верно! Ты победил монстра");
-                            person1.live++;
+                        } else {
+                            System.out.println("Ты проиграл эту битву!");
+                            person1.otnimatZhizn();
                         }
-                        System.out.println("Ты проиграл эту битву!");
-                        person1.otnimatZhizn();
                     }
-                    if (person1.live <= 0) {
+                    if (person1.getLive() <= 0) {
                         break;
                     }
                 }
