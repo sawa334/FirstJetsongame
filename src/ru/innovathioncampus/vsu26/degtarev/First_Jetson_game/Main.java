@@ -42,7 +42,11 @@ public class Main {
             if (r.nextBoolean()) {
                 test = new Monster(sizeBoard);
             } else {
-                test = new BigMonster(sizeBoard);
+                if (r.nextBoolean()){
+                    test = new BigMonster(sizeBoard);
+                }else {
+                    test = new MiniMonster(sizeBoard);
+                }
             }
             if (board[test.getY()][test.getX()].equals("  ")) {
                 board[test.getY()][test.getX()] = test.getImage();
