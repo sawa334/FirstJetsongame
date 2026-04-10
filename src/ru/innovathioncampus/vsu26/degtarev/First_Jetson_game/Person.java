@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Person {
     private int x, y; // координаты персонажа
-    private String image = "\\uD83E\\uDDD9\\u200D"; // вид персонажа на поле
+    private String image = "\uD83E\uDDD9\u200D"; // вид персонажа на поле
     private int live = 3; // количество жизней
     public boolean isMoveCorrect(int x, int y) {
         return this.x == x && Math.abs(this.y - y) == 1 || this.y == y && Math.abs(this.x - x) == 1;
@@ -12,9 +12,6 @@ public class Person {
     void move(int newX, int newY) {
         x = newX;
         y = newY;
-    }
-    void otnimatZhizn() {
-         live --;
     }
     Person(int size) {
         y = size;

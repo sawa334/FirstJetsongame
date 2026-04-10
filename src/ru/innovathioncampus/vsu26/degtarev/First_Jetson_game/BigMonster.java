@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 public class BigMonster extends Monster {
     public String getImage() {
-        return getImage();
+        return "\uD83D\uDC79";
     }
     @Override
     public boolean taskMonster(int difficultGame){
         System.out.println("Решите задачу:");
-        int x = r.nextInt(15);
+        int x = r.nextInt(15 + difficultGame);
         int y = r.nextInt(10);
         int z = r.nextInt(20);
         int trueAnswer = x * y - z;
